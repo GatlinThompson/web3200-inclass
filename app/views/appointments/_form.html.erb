@@ -1,42 +1,37 @@
-<%= form_with(model: appointment) do |form| %>
-  <% if appointment.errors.any? %>
+<%= form_with(model: course) do |form| %>
+  <% if course.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(appointment.errors.count, "error") %> prohibited this appointment from being saved:</h2>
+      <h2><%= pluralize(course.errors.count, "error") %> prohibited this course from being saved:</h2>
 
       <ul>
-        <% appointment.errors.each do |error| %>
+        <% course.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :availability_id, style: "display: block" %>
-    <%= form.text_field :availability_id %>
+  <div class="mb-3">
+    <%= form.label :prefix, style: "display: block", class: "form-label fw-semibold fs-5" %>
+    <%= form.text_field :prefix, class: "form-control border border-secondary-subtle" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :num, style: "display: block", class: "form-label fw-semibold fs-5" %>
+    <%= form.number_field :num, class: "form-control border border-secondary-subtle" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :title, style: "display: block", class: "form-label fw-semibold fs-5" %>
+    <%= form.text_field :title, class: "form-control border border-secondary-subtle" %>
+  </div>
+
+  <div class="mb-4">
+    <%= form.label :description, style: "display: block", class: "form-label fw-semibold fs-5" %>
+    <%= form.text_area :description, class: "form-control border border-secondary-subtle", rows: 5 %>
   </div>
 
   <div>
-    <%= form.label :student_id, style: "display: block" %>
-    <%= form.text_field :student_id %>
-  </div>
-
-  <div>
-    <%= form.label :kind, style: "display: block" %>
-    <%= form.text_field :kind %>
-  </div>
-
-  <div>
-    <%= form.label :on_date, style: "display: block" %>
-    <%= form.date_field :on_date %>
-  </div>
-
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-primary fs-4 fw-semibold"%>
   </div>
 <% end %>
